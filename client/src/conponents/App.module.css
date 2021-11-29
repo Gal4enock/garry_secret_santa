@@ -1,3 +1,10 @@
+.App {
+  text-align: center;
+  background-image: url(https://cdn.oboi7.com/content/images/47/fd/47fd5b9079fca38b770667b74671bbe9455cdb8f.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -71,7 +78,7 @@ h1 {
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url("../../images/heat.png");
+  background-image: url("../images/heat.png");
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
@@ -112,3 +119,4 @@ h1 {
   font: inherit;
   font-size: 18px;
 }
+
