@@ -20,6 +20,7 @@ class PotterController {
   async getUsers(req, res) {
     try {
       const { name } = req.body;
+      console.log(name);
       const users = await User.find();
       const newArr = users.filter(user => user.username !== name);
       return res.status(200).json(newArr);
