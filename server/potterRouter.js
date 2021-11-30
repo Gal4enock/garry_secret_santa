@@ -5,7 +5,7 @@ const router = new Router();
 
 router.post('/', potterController.getUsers);
 router.post('/user', potterController.addUser);
-router.delete('/user', potterController.deleteUser);
+router.delete('/user/:id', potterController.deleteUser);
 router.post('/pair', potterController.createPair);
 router.get('/pair', potterController.getPairs);
 

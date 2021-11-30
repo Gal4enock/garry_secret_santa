@@ -20,7 +20,10 @@ class PotterController {
   async getUsers(req, res) {
     try {
       const { name } = req.body;
-      console.log(name);
+      const havePair = await Pair.findOne({ fromUser: name })
+      if (havePair) {
+        return res.status(200).json({message: "You've already have pair", havePair});
+      }
       const users = await User.find();
       const newArr = users.filter(user => user.username !== name);
       return res.status(200).json(newArr);
@@ -32,10 +35,14 @@ class PotterController {
   async createPair(req, res) {
     try {
       const { fromUser, toUser } = req.body;
+      console.log(fromUser);
+      console.log(toUser);
       const pair = new Pair({ fromUser, toUser });
+      console.log('pair', pair);
       await pair.save();
       res.status(201).json({ message: `Pair ${fromUser} = ${toUser} created` });
     } catch (err) {
+      console.log("err", err);
       res.status(400).json({ message: "Something went wrong" });
     }
   };
@@ -50,7 +57,7 @@ class PotterController {
   }
 
   async deleteUser(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
     try {
       const deletedUser = await User.findByIdAndDelete(id);
       if (!deletedUser) {

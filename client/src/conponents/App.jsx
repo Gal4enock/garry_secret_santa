@@ -6,14 +6,15 @@ class App extends Component {
   state = {
     inputValue: '',
     userArr: [],
-    pickedName: ''
+    pickedName: '',
+    userId: '',
+    yourName: ''
   }
 
   handleChange = ({target}) => {
     this.setState({
       inputValue: target.value
     })
-    console.log(target.value);
   }
 
   handleSubmit = (e) => {
@@ -23,10 +24,21 @@ class App extends Component {
   }
 
   pickUser = (e) => {
-    this.setState({pickedName: e.target.dataset.name})
+    this.setState({
+      pickedName: e.target.dataset.name,
+      userId: e.target.dataset.id
+    })
   }
+
+  acceptPair = (e) => {
+
+    fetchUsers.deleteUser(this.state.userId)
+    fetchUsers.createPair(this.state.inputValue, this.state.pickedName)
+    this.setState({ pickedName: '', userArr: [] })
+    
+  }
+
   render() {
-    console.log(this.state.pickedName);
     return (
       <div className={style.App}>
         <header className={style.Searchbar}>
@@ -51,8 +63,15 @@ class App extends Component {
         </header>
         {this.state.inputValue &&
           <div>
-          {this.state.pickedName &&
-            <div className={style.bgd}></div>}
+          {(this.state.pickedName || this.state.userArr.message) &&
+            <div className={style.bgd}>
+          <div className={style.modal}>
+            <p className={style.text}>You are Santa for
+                <p className={style.name}> {this.state.pickedName || this.state.userArr.havePair.toUser} </p>
+            </p>
+                <button onClick={this.acceptPair} type="button" className={style.acceptButton}>OK</button>
+            </div>
+            </div>}
           <h2 className={style.greeting}>Greetings, {this.state.inputValue}</h2>
           <p className={style.greeting}>
            Are you ready to be a Secret Santa?
@@ -65,12 +84,7 @@ class App extends Component {
           <h3 className={style.pickText}>Pick one of this cards...</h3>
           <ImageGallery list={this.state.userArr} toOpen={this.pickUser} />
           </>}
-          {this.state.pickedName &&
-          <div className={style.modal}>
-            <p className={style.text}>You are Santa for
-              <p className={style.name}> {this.state.pickedName} </p>
-            </p>
-            </div>}
+          
         </div>
       </div>
     );

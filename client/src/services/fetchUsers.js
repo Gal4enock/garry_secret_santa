@@ -12,6 +12,15 @@ class FetchUsers {
     const user = axios.post(URL, {username}).then(resp => resp);
     return user;
   };
+  deleteUser(id) {
+    console.log("axios", id);
+      axios.delete(`${URL}user/${id}`).then(resp => resp);
+  }
+
+  async createPair(fromUser, toUser) {
+    const resp = await axios.post(`${URL}pair`, { fromUser, toUser });
+    return resp;
+  }
 }
 
 export default new FetchUsers();
