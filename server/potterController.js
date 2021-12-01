@@ -4,15 +4,17 @@ const Pair = require('./PairModel');
 class PotterController {
   async addUser(req, res) {
     try {
-      const { username } = req.body;
+      const { username, wishes } = req.body;
       const doubleUser = await User.findOne({ username });
       if (doubleUser) {
+        console.log(doubleUser);
         return res.status(400).json({ message: 'name already exist' });
       };
-      const user = new User({ username })
+      const user = new User({ username, wishes })
       await user.save();
       return res.status(200).json(user);
     } catch(err) {
+      console.log(err);
       res.status(400).json({message: "Something went wrong"})
     }
   }

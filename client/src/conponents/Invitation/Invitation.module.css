@@ -6,13 +6,14 @@
 }
 
 .wrapper {
+  position: relative;
   padding-top: 80px;
     text-align: center;
   background-image: url(https://europe-today.ru/media/2011/11/The-Making-of-Harry-Potter1-900x5061.jpg);
   background-repeat: no-repeat;
   background-position: center;
   min-height: 572px;
-  padding-bottom: 50px;
+  background-size: cover;
   color: white;
   letter-spacing: 2px;
 
@@ -29,13 +30,16 @@
   font-weight: 700;
   letter-spacing: 2px;
   padding-bottom: 10px;
+  text-shadow: 1px 1px 2px black, 0 0 1em red;
 }
 
 .wishInput{
   margin-bottom: 70px;
   font-weight: 700;
-  width: 300px;
-  padding: 5px;
+  font-size: 19px;
+  width: 250px;
+  padding: 10px;
+  border-top-left-radius: 100% 20px; border-bottom-right-radius: 100% 20px;
 }
 
 .wishTitle {
@@ -45,6 +49,7 @@
   background-color:  rgb(51 51 51 / 90%);
   width: 300px;
   margin: 0 auto;
+  border-radius: 40px 10px;
 }
 
 .acceptButton {
@@ -63,4 +68,57 @@
   font-size: 28px;
   box-shadow: 0px 2px 4px -1px rgba(196, 14, 14, 0.2), 0px 4px 5px 0px rgba(207, 22, 22, 0.14),
     0px 1px 10px 0px rgba(151, 5, 5, 0.12);
+}
+
+.button {
+    display: inline-block;
+  width: 148px;
+  height: 48px;
+  border-radius: 20px;
+  background-image: url("../../images/heat.png");
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position:left;
+  cursor: pointer;
+  outline: none;
+  padding-left: 30px;
+  font-weight: 700;
+  font-size: 28px;
+  background-color: rgb(124, 38, 38);
+  margin-top: 75px;
+  box-shadow: 0px 2px 4px -1px rgba(196, 14, 14, 0.2), 0px 4px 5px 0px rgba(207, 22, 22, 0.14),
+    0px 1px 10px 0px rgba(151, 5, 5, 0.12);
+}
+
+.modal {
+  position: absolute;
+  top:20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 310px;
+  margin: 0 auto;
+  text-align: center;
+  height: 320px;
+  background-color: rgb(124 120 120 / 62%);
+  background-image: url('../../images/herbT.png');
+  background-size: cover;
+  opacity: 0.85;
+  border-radius: 15px;
+  z-index: 3;
+}
+.bgd {
+  background-color: rgb(124 120 120 / 62%);
+  width: 90%;
+  height: 500px;
+  position: absolute; 
+    /* transform: translateY(25%); */
+  left: 5%;
+  z-index: 2;
+}
+.text {
+  background-color: black;
+  color: #fff;
+  margin-top: 130px;
+  opacity: 1;
+  font-weight: 700;
 }

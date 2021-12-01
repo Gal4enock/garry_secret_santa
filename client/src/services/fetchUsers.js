@@ -9,7 +9,7 @@ class FetchUsers {
   };
 
   addUser(username, wishes) {
-    const user = axios.post(URL, {username, wishes}).then(resp => resp);
+    const user = axios.post(`${URL}user`, {username, wishes}).then(resp => resp);
     return user;
   };
 
