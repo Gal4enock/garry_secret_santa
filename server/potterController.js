@@ -34,15 +34,11 @@ class PotterController {
 
   async createPair(req, res) {
     try {
-      const { fromUser, toUser } = req.body;
-      console.log(fromUser);
-      console.log(toUser);
-      const pair = new Pair({ fromUser, toUser });
-      console.log('pair', pair);
+      const { fromUser, toUser, wishes } = req.body;
+      const pair = new Pair({ fromUser, toUser, wishes });
       await pair.save();
       res.status(201).json({ message: `Pair ${fromUser} = ${toUser} created` });
     } catch (err) {
-      console.log("err", err);
       res.status(400).json({ message: "Something went wrong" });
     }
   };

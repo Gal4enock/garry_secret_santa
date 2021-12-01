@@ -8,10 +8,11 @@ class FetchUsers {
     return users
   };
 
-  addUser(username) {
-    const user = axios.post(URL, {username}).then(resp => resp);
+  addUser(username, wishes) {
+    const user = axios.post(URL, {username, wishes}).then(resp => resp);
     return user;
   };
+
   deleteUser(id) {
     console.log("axios", id);
       axios.delete(`${URL}user/${id}`).then(resp => resp);
