@@ -14,12 +14,11 @@ class FetchUsers {
   };
 
   deleteUser(id) {
-    console.log("axios", id);
       axios.delete(`${URL}user/${id}`).then(resp => resp);
   }
 
-  async createPair(fromUser, toUser) {
-    const resp = await axios.post(`${URL}pair`, { fromUser, toUser });
+  async createPair(fromUser, toUser, wishes) {
+    const resp = await axios.post(`${URL}pair`, { fromUser, toUser, wishes });
     return resp;
   }
 }

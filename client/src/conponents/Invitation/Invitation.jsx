@@ -11,6 +11,7 @@ class Invitation extends Component {
   }
 
   handlechange = ({ target }) => {
+    console.log(target.name);
     this.setState({
       [target.name]: target.value
     })
@@ -18,7 +19,7 @@ class Invitation extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('object');
+    document.documentElement.scrollTop = 0;
     try {
       const res = await fetchUsers.addUser(this.state.username, this.state.wishes);
       if (res) {

@@ -1,0 +1,15 @@
+.startSelect {
+    color: #4F4F4F;
+    border: none;
+    outline: none;
+    display: inline-block;
+    width: 100%;
+    font: inherit;
+    font-size: 28px;
+    border: none;
+    outline: none;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+    font-weight: 700;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from './SecretSanta.module.css';
 import fetchUsers from '../../services/fetchUsers';
 import ImageGallery from '../../conponents/ImageGallery/ImageGallery';
+import UserList from '../UserList/UserList';
 
 class SecretSanta extends Component {
   state = {
@@ -10,7 +11,8 @@ class SecretSanta extends Component {
     pickedName: '',
     userId: '',
     yourName: '',
-    wishes: ''
+    wishes: '',
+    allUsers: []
   }
 
   handleChange = ({target}) => {
@@ -23,24 +25,30 @@ class SecretSanta extends Component {
     e.preventDefault();
     fetchUsers.getUsers(this.state.inputValue)
       .then(data => this.setState({ userArr: data }))
-  }
-
-  pickUser = (e) => {
-    this.setState({
-      pickedName: e.target.dataset.name,
-      userId: e.target.dataset.id,
-      wishes: e.target.dataset.wishes
-    })
-  }
-
-  acceptPair = (e) => {
-    fetchUsers.deleteUser(this.state.userId)
-    fetchUsers.createPair(this.state.inputValue, this.state.pickedName)
-    this.setState({ pickedName: '', userArr: [] })
+    }
     
-  }
+  pickUser = (e) => {
+      this.setState({
+        pickedName: e.target.dataset.name,
+        userId: e.target.dataset.id,
+        wishes: e.target.dataset.wish
+      })
+    document.documentElement.scrollTop = 180;
+    }
+    
+    acceptPair = (e) => {
+      fetchUsers.deleteUser(this.state.userId)
+      fetchUsers.createPair(this.state.inputValue, this.state.pickedName, this.state.wishes)
+      this.setState({ pickedName: '', userArr: [] })
+    }
 
+  componentDidMount() {
+    fetchUsers.getUsers().then(data => this.setState({ allUsers: data }))
+  }
+  
   render() {
+    console.log(this.state.allUsers);
+    const users = this.state.allUsers;
     return (
       <div className={style.App}>
         <header className={style.Searchbar}>
@@ -48,19 +56,8 @@ class SecretSanta extends Component {
         <p>Secret Santa</p>
         <form className={style.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={style.SearchFormButton}>
-          </button>
-          <select onChange={this.handleChange} className={style.startSelect}>
-            <option >Choose your name from the list</option>
-            <option value="Natalia Petrenko">Natalia Petrenko</option>
-            <option value="Natalia Savchenko">Natalia Savchenko</option>
-            <option value="Dmytro Savchenko">Dmytro Savchenko</option>
-            <option value="Tymofii Khyzhynskyi">Tymofii Khyzhynskyi</option>
-            <option value="Halyna Khyzhynska">Halyna Khyzhynska</option>
-            <option value="Viktoria Dybka">Viktoria Dybka</option>
-            <option value="Vadym Dybka">Vadym Dybka</option>
-            <option value="Алла Вовченко">Alla Vovchenko</option>
-            <option value="Dmytro Vovchenko">Dmytro Vovchenko</option>
-          </select>
+            </button>
+            <UserList list={users} handleChange={this.handleChange}/>
         </form>
         </header>
         {this.state.inputValue &&
@@ -71,7 +68,7 @@ class SecretSanta extends Component {
               <div className={style.text}>
                 <p>You are Santa for</p> 
                 <p className={style.name}> {this.state.pickedName || this.state.userArr.havePair.toUser} </p>
-                <p className={style.name}>{this.state.wishes || this.state.userArr.havePair.wishes} </p>
+                <p className={style.name}>Wishes: {this.state.wishes || this.state.userArr.havePair.wishes} </p>
             </div>
                 <button onClick={this.acceptPair} type="button" className={style.acceptButton}>OK</button>
             </div>
