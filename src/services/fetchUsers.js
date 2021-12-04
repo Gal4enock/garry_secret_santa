@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:4000/';
+const URL = 'https://secure-savannah-29109.herokuapp.com/';
 
 class FetchUsers {
   getUsers(name) {
