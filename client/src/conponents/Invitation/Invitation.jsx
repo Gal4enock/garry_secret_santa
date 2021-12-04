@@ -11,7 +11,6 @@ class Invitation extends Component {
   }
 
   handlechange = ({ target }) => {
-    console.log(target.name);
     this.setState({
       [target.name]: target.value
     })
