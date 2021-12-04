@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './SecretSanta.module.css';
 import fetchUsers from '../../services/fetchUsers';
-import ImageGallery from '../../conponents/ImageGallery/ImageGallery';
+import ImageGallery from '../../components/ImageGallery/ImageGallery';
 import UserList from '../UserList/UserList';
 
 class SecretSanta extends Component {

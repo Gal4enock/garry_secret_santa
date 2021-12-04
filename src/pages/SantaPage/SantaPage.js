@@ -1,4 +1,4 @@
-import SecretSanta from '../../conponents/SecretSanta/SecretSanta.jsx';
+import SecretSanta from '../../components/SecretSanta/SecretSanta.jsx';
 
 const SantaPage = function () {
   return (

@@ -1,4 +1,4 @@
-import Invitation from '../../conponents/Invitation/Invitation.jsx';
+import Invitation from '../../components/Invitation/Invitation.jsx';
 
 const InvitePage = function () {
   return (
