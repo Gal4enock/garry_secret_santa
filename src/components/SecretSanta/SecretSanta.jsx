@@ -49,6 +49,18 @@ class SecretSanta extends Component {
   render() {
     console.log(this.state.allUsers);
     const users = this.state.allUsers;
+    const users1 = [
+      { _id: '61abd2b25318ecf97517afe3', username: 'Galyna Khyzhynska', wishes: 'theatres, good tea (flowered), mascara or surprise )) ', __v: 0 },
+      { _id: '61abe0da5318ecf97517b02f', username: 'Наталія Петренко', wishes: 'Підсвічник, ялинкова іграшка красіва, свічка з аро…муму, щоб був вибір і мені все одно буде сюрприз)', __v: 0 },
+      { _id: '61abe2335318ecf97517b038', username: 'Viktoria DYBKA ', wishes: 'no wishes', __v: 0 },
+      { _id: '61abec4a5318ecf97517b045', username: 'Dmytro Vovchenko', wishes: 'Something Fishing', __v: 0 },
+        {_id: '61ac8723321211249aa33353', username: 'Alla Vovchenko ', wishes: 'Chocolate😉', __v: 0},
+      { _id: '61ad2155511c47e07ab4f1c0', username: 'dmitriy.savchenko', wishes: 'https://www.olx.ua/d/uk/obyavlenie/ugreen-usb-c-usb-type-c-pd-cable-macbook-apple-IDMvvtS.html', __v: 0 },
+      { _id: '61ad2155511c47e07ab4f5c0', username: 'Савченко Наталья', wishes: 'Билеты в Молодой театр ', __v: 0 },
+      { _id: '61ad2155511c48e07ab4f5c0', username: 'Vadym Dybka', wishes: 'давайте так - я хочу до 300 гривен самую непонятную ненужную хуйню. ну прост очето толковое нереальн опридумтаь. пусть это будет чтото специально ебонутое чтоб запомнилось чисто как подарок и как необычный НГ', __v: 0 },
+      { _id: '61ad2155511c47e07ab4f5c0', username: 'Timka Khizhinskiy ', wishes: 'Sweetes', __v: 0 }
+    ]
+    console.log(users)
     return (
       <div className={style.App}>
         <header className={style.Searchbar}>
@@ -57,7 +69,7 @@ class SecretSanta extends Component {
         <form className={style.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={style.SearchFormButton}>
             </button>
-            <UserList list={users} handleChange={this.handleChange}/>
+            <UserList list={users1} handleChange={this.handleChange}/>
         </form>
         </header>
         {this.state.inputValue &&
